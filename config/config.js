@@ -26,8 +26,8 @@ let config = {
 	httpsPrivateKey: "", 	// HTTPS private key path, only require when useHttps is true
 	httpsCertificate: "", 	// HTTPS Certificate path, only require when useHttps is true
 
-	language: "en",
-	locale: "en-US",
+	language: "de",
+	locale: "de-CH",
 	logLevel: ["INFO", "LOG", "WARN", "ERROR"], // Add "DEBUG" for even more logging
 	timeFormat: 24,
 	units: "metric",
@@ -42,29 +42,73 @@ let config = {
 			module: "alert",
 		},
 		{
+			module: 'MMM-Remote-Control',
+			// uncomment the following line to show the URL of the remote control on the mirror
+			// position: 'bottom_left',
+			// you can hide this module afterwards from the remote control itself
+			config: {
+				customCommand: {},  // Optional, See "Using Custom Commands" below
+				showModuleApiMenu: true, // Optional, Enable the Module Controls menu
+				secureEndpoints: true, // Optional, See API/README.md
+				// uncomment any of the lines below if you're gonna use it
+				// customMenu: "custom_menu.json", // Optional, See "Custom Menu Items" below
+				// apiKey: "", // Optional, See API/README.md for details
+				// classes: {} // Optional, See "Custom Classes" below
+			}
+		},
+		{
 			module: "updatenotification",
 			position: "top_bar"
 		},
 		{
 			module: "clock",
-			position: "top_left"
+			position: "top_left",
+			displayType: "analog",
+			lat: 47.3,
+      		lon: 7.9,
+			showSunTimes: true
+		},
+		{
+			module: "compliments",
+			position: "lower_third",	// This can be any of the regions.
+									// Best results in one of the middle regions like: lower_third
+			config: {
+				compliments: {
+					morning: [
+						"Ruiger Tag, keine Alarme!"
+					],
+					afternoon: [
+						"Willkommen zur Übung ``Haus Q``"
+					],
+					evening: [
+						"Willkommen zur Übung ``Haus Q``"
+					],
+				}
+			}
 		},
 		{
 			module: "calendar",
-			header: "US Holidays",
+			header: "Nächste Übungen",
 			position: "top_left",
 			config: {
 				calendars: [
 					{
 						symbol: "calendar-check",
-						url: "webcal://www.calendarlabs.com/ical-calendar/ics/76/US_Holidays.ics"
+						url: "https://cs.kroesch.net/images/feed.ics"
 					}
 				]
 			}
 		},
 		{
-			module: "compliments",
-			position: "lower_third"
+				module: 'MMM-EasyBack',
+				position: 'fullscreen_below',
+				config: {
+						bgName: "atemschutz.jpg",
+						videoName: "",       // "baboon.mp4",         // file name of your local video
+						youTubeID: "", //"SkeNMoDlHUU", // "So3vH9FY2H4", // ID from any YouTube video. ID comes after the = sign of YouTube url
+						height: "1080px",    // your display's resolution in pixels. Enter in config.js
+						width: "1920px",     // your display's resolution in pixels. Enter in config.js
+				}
 		},
 		{
 			module: "weather",
@@ -72,9 +116,9 @@ let config = {
 			config: {
 				weatherProvider: "openweathermap",
 				type: "current",
-				location: "New York",
-				locationID: "5128581", //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
-				apiKey: "YOUR_OPENWEATHER_API_KEY"
+				location: "Dulliken",
+				locationID: "7285679",
+				apiKey: "4548d1b1b536a922a3ca8d5e5660ae61"
 			}
 		},
 		{
@@ -84,9 +128,9 @@ let config = {
 			config: {
 				weatherProvider: "openweathermap",
 				type: "forecast",
-				location: "New York",
-				locationID: "5128581", //ID from http://bulk.openweathermap.org/sample/city.list.json.gz; unzip the gz file and find your city
-				apiKey: "YOUR_OPENWEATHER_API_KEY"
+				location: "Dulliken",
+				locationID: "7285679",
+				apiKey: "4548d1b1b536a922a3ca8d5e5660ae61"
 			}
 		},
 		{
@@ -95,8 +139,8 @@ let config = {
 			config: {
 				feeds: [
 					{
-						title: "New York Times",
-						url: "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml"
+						title: "Schweiz",
+						url: "https://www.srf.ch/news/bnf/rss/1890"
 					}
 				],
 				showSourceTitle: true,
