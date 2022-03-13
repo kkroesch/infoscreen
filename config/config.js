@@ -75,13 +75,14 @@ let config = {
 			config: {
 				compliments: {
 					morning: [
-						"Ruiger Tag, keine Alarme!"
-					],
-					afternoon: [
-						"Willkommen zur Übung ``Haus Q``"
+						"Dir einen ruhigen Tag."
 					],
 					evening: [
-						"Willkommen zur Übung ``Haus Q``"
+						"Willkommen zur Übung",
+            "Hast Du genug getrunken?",
+            "Ist Deine PSA vollständig?",
+            "Langsam pressieren!",
+            "Langsam ist geschmeidig -- geschmeidig ist schnell."
 					],
 				}
 			}
