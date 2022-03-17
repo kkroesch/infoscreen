@@ -95,7 +95,7 @@ let config = {
 				calendars: [
 					{
 						symbol: "calendar-check",
-						url: "https://cs.kroesch.net/images/feed.ics"
+						url: "https://lodur-so.ch/dulliken/tunnel.php?modul=426&key=200E014A-613C-DFD7-9647-7D223EE031EE"
 					}
 				]
 			}

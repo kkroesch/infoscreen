@@ -1,56 +1,105 @@
-![MagicMirror²: The open source modular smart mirror platform. ](.github/header.png)
+# Feuerwehr Infoscreen
 
-<p style="text-align: center">
-  <a href="https://choosealicense.com/licenses/mit">
-		<img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License">
-	</a>
-	<img src="https://img.shields.io/github/workflow/status/michmich/magicmirror/Run%20Automated%20Tests" alt="GitHub Actions">
-	<img src="https://img.shields.io/github/checks-status/michmich/magicmirror/master" alt="Build Status">
-	<a href="https://codecov.io/gh/MichMich/MagicMirror">
-		<img src="https://codecov.io/gh/MichMich/MagicMirror/branch/master/graph/badge.svg?token=LEG1KitZR6" alt="CodeCov Status"/>
-	</a>
-	<a href="https://github.com/MichMich/MagicMirror">
-		<img src="https://img.shields.io/github/stars/michmich/magicmirror?style=social">
-	</a>
-</p>
+Ziel dieses Projekts ist die Erstellung eines Infoscreens für ein Feuerwehrmagazin, das relevante Informationen darstellt, die sich nach dem jeweiligen Übungs- und Einsatzbetrieb richten.
 
-**MagicMirror²** is an open source modular smart mirror platform. With a growing list of installable modules, the **MagicMirror²** allows you to convert your hallway or bathroom mirror into your personal assistant. **MagicMirror²** is built by the creator of [the original MagicMirror](https://michaelteeuw.nl/tagged/magicmirror) with the incredible help of a [growing community of contributors](https://github.com/MichMich/MagicMirror/graphs/contributors).
+## Features
 
-MagicMirror² focuses on a modular plugin system and uses [Electron](https://www.electronjs.org/) as an application wrapper. So no more web server or browser installs necessary!
+- Kalendervorschau mit den kommenden Übungen
+- Wetterinformationen für die Region
+- Individuelle Meldungen und Ankündigungen
+- Aktuelle Nachrichten
+- Darstellung von Alarmmeldungen im Einsatzfall
+- "Diashow" mit wechselnden Hintergrundbildern bei öffentlichen Veranstaltungen
 
-## Documentation
+![Screenshot](doc/screenshot-annotated.png)
 
-For the full documentation including **[installation instructions](https://docs.magicmirror.builders/getting-started/installation.html)**, please visit our dedicated documentation website: [https://docs.magicmirror.builders](https://docs.magicmirror.builders).
+Weitere Möglichkeiten können über die Installation zusätzlicher Module installiert werden.
 
-## Links
+## Hardware-Plattform
 
-- Website: [https://magicmirror.builders](https://magicmirror.builders)
-- Documentation: [https://docs.magicmirror.builders](https://docs.magicmirror.builders)
-- Forum: [https://forum.magicmirror.builders](https://forum.magicmirror.builders)
-  - Technical discussions: https://forum.magicmirror.builders/category/11/core-system
-- Discord: [https://discord.gg/J5BAtvx](https://discord.gg/J5BAtvx)
-- Blog: [https://michaelteeuw.nl/tagged/magicmirror](https://michaelteeuw.nl/tagged/magicmirror)
-- Donations: [https://magicmirror.builders/#donate](https://magicmirror.builders/#donate)
+Der Infoscreen besteht aus einem handelsüblichem Fernsehbildschirm und einem Kleincomputer ([Raspberry Pi](https://de.wikipedia.org/wiki/Raspberry_Pi), im Folgenden kurz "Pi" genannt). Der Pi übernimmt folgende Aufgaben:
 
-## Contributing Guidelines
+- Anzeige der Informationen
+- ggf. Sprachausgabe
+- Ansteuerung des Bildschirms (Ein-/Ausschalten)
+- Verbindung zum Internet und einholen der darzustellenden Informationen
+- Integration mit Sensoren (Bewegungsmelder, etc.)
 
-Contributions of all kinds are welcome, not only in the form of code but also with regards to
+## Software
 
-- bug reports
-- documentation
-- translations
+Die Software zur Darstellung der Informationen ist [MagicMirror](https://magicmirror.builders/). Diese ist frei zugängliche Open-Source-Software, die für den vorgesehenen Einsatz nach Belieben modifiziert werden kann.
 
-For the full contribution guidelines, check out: [https://docs.magicmirror.builders/getting-started/contributing.html](https://docs.magicmirror.builders/getting-started/contributing.html)
+### Installation
 
-## Enjoying MagicMirror? Consider a donation!
+Der Pi wird mit einer aktuellen Version des Raspbian-Betriebssystems vorbereitet und mit dem WLAN-Netzwerk verbunden. Der Anschluss an den Fernseher erfolgt über die HDMI-Schnittstelle.
 
-MagicMirror² is opensource and free. That doesn't mean we don't need any money.
+Die Installation der Software ist im [Handbuch](https://docs.magicmirror.builders/getting-started/installation.html) (englisch) ausführlich beschrieben. Ich habe die Variante "Manual Installation" gewählt, da diese die beste Kontrolle über die Konfiguration gewährleistet.
 
-Please consider a donation to help us cover the ongoing costs like webservers and email services.
-If we receive enough donations we might even be able to free up some working hours and spend some extra time improving the MagicMirror² core.
+Um den automatischen Start beim Einschalten zu gewährleisten, ist es notwendig, den PM2 Process Manager zu installieren und zu konfigurieren, wie im [Konfigurationshandbuch](https://docs.magicmirror.builders/configuration/autostart.html) beschrieben.
 
-To donate, please follow [this](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=G5D8E9MR5DTD2&source=url) link.
+Die Konfiguration der Module erfolgt über die Datei `config/config.js` im MagicMirror-Verzeichnis. Eine aktuelle Konfiguration für die [Feuerwehr Dulliken](https://lodur-so.ch/dulliken/) befindet sich in der Versionsverwaltung.
 
-<p style="text-align: center">
-	<a href="https://forum.magicmirror.builders/topic/728/magicmirror-is-voted-number-1-in-the-magpi-top-50"><img src="https://magicmirror.builders/img/magpi-best-watermark-custom.png" width="150" alt="MagPi Top 50"></a>
-</p>
+Je nach Bildschirmgrösse muss ggf. die Schriftgrösse der Anzeige angepasst werden. Dies geschieht in der Datei `css/custom.css`.
+
+### Konfiguration
+
+#### Kalender-Abo
+
+Die Ankündigungen der Übungen werden aus dem Lodur-System mittel Kalenderabo (ICS) heruntergeladen. Dazu ist der URL des Kalenders in der Konfiguration einzutragen:
+
+```
+{
+	module: "calendar",
+	header: "Nächste Übungen",
+	position: "top_left",
+	config: {
+		calendars: [
+			{
+				symbol: "calendar-check",
+				url: "https://lodur-so.ch/dulliken/tunnel.php?modul=426&key=200xxxxxxxxxxxxxxxxEE"
+			}
+		]
+	}
+},
+```
+
+### Zusatzmodule
+
+Die aktuell verwendeten Module sind im Lieferumfang der Grundversion vorhanden. An [Zusatzmodulen](https://github.com/MichMich/MagicMirror/wiki/3rd-party-modules) sind installiert:
+
+- [MMM-EasyBack](https://github.com/mykle1/MMM-EasyBack) zur Darstellung des Hintergrundbilds
+- [MMM-RemoteControl](https://github.com/Jopyth/MMM-Remote-Control) zur Darstellung von Alarmmeldungen von externen Systemen.
+
+#### Bildschirmhintergrund
+
+Im Verzeichnis `/modules/MMM-EasyBack/images` können Bilder hochgeladen werden, die im Hintergrund angezeigt werden sollen. Dabei ist darauf zu achten, dass das Seitenverhältnis des Bildes mit dem des Fernseher übereinstimmt, damit es keine schwarzen Ränder unten oder rechts gibt. Welches Bild angezeigt wird, legt man in der Konfiguration des Moduls fest:
+
+```
+{
+	module: 'MMM-EasyBack',
+	position: 'fullscreen_below',
+	config: {
+		bgName: "atemschutz.jpg"
+	}
+}
+```
+
+Wie aus der Dokumentation ersichtlich, kann man auch YouTube-Videos im Hintergrund laufen lassen.
+
+## Integration
+
+Der Infoscreen kann mit verschiedenen Hard- und Softwaresystemen verbunden werden. Die einzelnen Möglichkeiten werden hier nach und nach ergänzt.
+
+### HDMI
+
+Das Ein- und Ausschalten des Fernsehers erfolgt etwas umständlich über [CEC-Kommandos](https://pimylifeup.com/raspberrypi-hdmi-cec/), diese müssen installiert sein.
+
+```bash
+# Fernseher in den Standby-Modus
+echo 'standby 0' | cec-client -s -d 1
+
+# Fernseher einschalten
+echo 'on 0' | cec-client -s -d 1
+```
+
+Diese Kommandos sollen künftig über den Bewegungsmelder ausgelöst werden. Das ist aber aktuell nicht implementiert.
