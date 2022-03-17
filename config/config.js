@@ -79,10 +79,9 @@ let config = {
 					],
 					evening: [
 						"Willkommen zur Übung",
-            "Hast Du genug getrunken?",
-            "Ist Deine PSA vollständig?",
-            "Langsam pressieren!",
-            "Langsam ist geschmeidig -- geschmeidig ist schnell."
+						"Hast Du genug getrunken?",
+						"Ist Deine PSA vollständig?",
+						"Langsam pressieren!"
 					],
 				}
 			}
@@ -95,7 +94,7 @@ let config = {
 				calendars: [
 					{
 						symbol: "calendar-check",
-						url: "https://lodur-so.ch/dulliken/tunnel.php?modul=426&key=200E014A-613C-DFD7-9647-7D223EE031EE"
+						url: "https://lodur-so.ch/dulliken/tunnel.php?modul=426&key=${LODUR_KEY}"
 					}
 				]
 			}
@@ -119,7 +118,7 @@ let config = {
 				type: "current",
 				location: "Dulliken",
 				locationID: "7285679",
-				apiKey: "4548d1b1b536a922a3ca8d5e5660ae61"
+				apiKey: "${WEATHER_KEY}",
 			}
 		},
 		{
@@ -131,7 +130,7 @@ let config = {
 				type: "forecast",
 				location: "Dulliken",
 				locationID: "7285679",
-				apiKey: "4548d1b1b536a922a3ca8d5e5660ae61"
+				apiKey: "${WEATHER_KEY}",
 			}
 		},
 		{
