@@ -12,6 +12,12 @@ Ziel dieses Projekts ist die Erstellung eines Infoscreens für ein Feuerwehrmaga
 - "Diashow" mit wechselnden Hintergrundbildern bei öffentlichen Veranstaltungen
 
 ![Screenshot](doc/screenshot-annotated.png)
+*Abbildung 1 -- Screenshot im Übungsmodus*
+
+![Screenshot](doc/screenshot-alert.png)
+*Abbildung 2 -- Screenshot im Alarmmodus*
+
+
 
 Weitere Möglichkeiten können über die Installation zusätzlicher Module installiert werden.
 
